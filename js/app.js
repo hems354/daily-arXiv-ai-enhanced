@@ -924,6 +924,7 @@ function parseJsonlData(jsonlText, date) {
         category: allCategories,
         summary: summary,
         details: paper.summary || '',
+        abstract_zh: paper.AI && paper.AI.abstract_zh ? paper.AI.abstract_zh : '',
         date: date,
         id: paper.id,
         motivation: paper.AI && paper.AI.motivation ? paper.AI.motivation : '',
@@ -1475,6 +1476,9 @@ function showPaperDetails(paper, paperIndex) {
   const highlightedAbstract = modalTitleTerms.length > 0 
     ? highlightMatches(abstractText, modalTitleTerms, 'keyword-highlight') 
     : abstractText;
+  const highlightedAbstractZh = paper.abstract_zh && modalTitleTerms.length > 0
+    ? highlightMatches(paper.abstract_zh, modalTitleTerms, 'keyword-highlight')
+    : paper.abstract_zh;
   
   // 高亮其他部分（如果存在且是摘要的一部分）
   const highlightedMotivation = paper.motivation && modalTitleTerms.length > 0 
@@ -1515,7 +1519,8 @@ function showPaperDetails(paper, paperIndex) {
         ${paper.result ? `<div class="paper-section"><h4>Result</h4><p>${highlightedResult}</p></div>` : ''}
         ${paper.conclusion ? `<div class="paper-section"><h4>Conclusion</h4><p>${highlightedConclusion}</p></div>` : ''}
       </div>
-      
+
+      ${highlightedAbstractZh ? `<h3>中文摘要翻译</h3><p class="original-abstract">${highlightedAbstractZh}</p>` : ''}
       ${highlightedAbstract ? `<h3>Abstract</h3><p class="original-abstract">${highlightedAbstract}</p>` : ''}
       
       <div class="pdf-preview-section">
