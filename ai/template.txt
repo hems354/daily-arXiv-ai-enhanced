@@ -1,4 +1,12 @@
-Please analyze the following abstract of papers. 
+Please analyze the following paper abstract in {language}.
 
 Content:
 {content}
+
+Please output the following fields:
+1. tldr: a concise summary.
+2. motivation: the motivation of the paper.
+3. method: the main method.
+4. result: the main experimental or analytical results.
+5. conclusion: the conclusion of the paper.
+6. abstract_zh: translate the original English abstract into fluent and accurate Chinese. Keep academic terminology accurate, especially terms related to machine learning, medical imaging, fMRI, brain disorders, graph learning, and hypergraph learning.
